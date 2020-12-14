@@ -30,7 +30,7 @@ app.use("/products", productRouter)
 // MONGOOSE
 mongoose.connect(
   MONGODB_URI,
-  { useUnifiedTopology: true, useFindAndModify: false, useNewUrlParser: true },
+  { useUnifiedTopology: true, useFindAndModify: false, useNewUrlParser: true, useCreateIndex: true },
   (err) => {
     if (err) { console.log(err) }
     console.log("DB Connected!")
