@@ -1,27 +1,27 @@
 const Order = require('../models/Order')
 
 const getOrders = (req, res) => {
-  Order.find().then(response => res.send(response))
+  return Order.find()
 }
 
 const createOrder = (req, res) => {
-  const { name, price, description, options, tags } = req.body; // EDIT
-  const newOrder = {name, price, description, options, tags} // EDIT
-Order.create(newOrder).then(response => res.send(response))
+  const { name } = req.body; // EDIT
+  const newOrder = {name} // EDIT
+  return new Product(newOrder);
 }
 
 const getOrder = (req, res) => {
-  Order.findById(req.params.id).then(response => res.send(response))
+  return Order.findById(req.params.id)
 }
 
 const deleteOrder = (req, res) => {
-  Order.findByIdAndDelete(req.params.id).then(response => res.send('Order Removed'))
+  return Order.findByIdAndDelete(req.params.id)
 }
 
 const updateOrder = (req, res) => {
-  const { name, price, description, options, tags } = req.body; // EDIT
-  const updatedOrder = {name, price, description, options, tags} // EDIT
-  Order.findByIdAndUpdate(req.params.id, updatedOrder, { new: true }).then(response => res.send(response))
+  const { name } = req.body; // EDIT
+  const updatedOrder = {name} // EDIT
+  return Order.findByIdAndUpdate(req.params.id, updatedOrder, { new: true })
 }
 
 module.exports = {
