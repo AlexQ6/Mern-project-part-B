@@ -19,6 +19,7 @@ const getAllProducts = (req, res) => {
 };
 
 const createOneProduct = (req, res) => {
+  console.log("Pcontroller");
   createProduct(req).save((err, product) => {
     if (err) {
       res.status(500);

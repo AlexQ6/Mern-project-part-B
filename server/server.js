@@ -6,6 +6,7 @@ require("dotenv/config");
 
 // LOCAL FILES
 const productRouter = require('./routes/productRouter');
+const orderRouter = require('./routes/orderRouter')
 
 // CONSTANT VARIABLES
 const PORT = process.env.PORT || 5000;
@@ -25,7 +26,9 @@ app.get("/", (req, res) => {
   res.send("got your request");
 });
 
+app.use("/orders", orderRouter)
 app.use("/products", productRouter)
+
 
 // MONGOOSE
 mongoose.connect(
