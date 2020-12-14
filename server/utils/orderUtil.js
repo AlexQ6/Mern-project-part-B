@@ -7,7 +7,7 @@ const getOrders = (req, res) => {
 const createOrder = (req, res) => {
   const { name } = req.body; // EDIT
   const newOrder = {name} // EDIT
-  return new Product(newOrder);
+  return new Order(newOrder);
 }
 
 const getOrder = (req, res) => {

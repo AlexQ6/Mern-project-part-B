@@ -5,7 +5,7 @@ const getProducts = (req, res) => {
 };
 
 const createProduct = (req, res) => {
-  console.log("YESSS");
+  console.log("productUtil");
   const { name, description, image, tags, options, price } = req.body; // EDIT
   const newProduct = { name, description, image, tags, options, price }; // EDIT
   return new Product(newProduct);
