@@ -5,7 +5,6 @@ const getOrders = (req, res) => {
 }
 
 const createOrder = (req, res) => {
-  console.log(req.body);
   return new Order(req.body);
 }
 
@@ -20,7 +19,7 @@ const deleteOrder = (req, res) => {
 const updateOrder = (req, res) => {
   // const { name } = req.body; // EDIT
   // const updatedOrder = {name} // EDIT
-  return Order.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  return Order.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
 }
 
 module.exports = {

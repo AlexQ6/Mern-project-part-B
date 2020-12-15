@@ -4,17 +4,20 @@ const Schema = mongoose.Schema;
 const Order = new Schema({
     name: {
         type: String,
-        required: true,
+        required: [true, "Customer name required"]
       },
 
     mobile: {
       type: String,
       // required: true,
-      validator: function(v) {
-        arr = v.trim().split("")
-        return (arr[0] == "0" && arr[1] == "4" && arr.length == 10)
+      validate: { 
+        validator: function(v) {
+          str = v.replace(/ +/g, "")
+          arr = str.split("")
+          return (arr[0] == "0" && arr[1] == "4" && arr.length == 10)
+        },
       },
-      message: "Please enter a valid mobile number"
+      message: props => `${props.value} is not a valid phone number!`
     },
 
     email: {

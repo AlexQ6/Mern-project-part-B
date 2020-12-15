@@ -24,6 +24,7 @@ const updateProduct = (req, res) => {
   const updatedProduct = { name, description, image, tags, options, price }; // EDIT
   return Product.findByIdAndUpdate(req.params.id, updatedProduct, {
     new: true,
+    runValidators: true
   })
 };
 
