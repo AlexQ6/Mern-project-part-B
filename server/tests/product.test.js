@@ -4,13 +4,17 @@ const app = require("../server");
 const mongoose = require("mongoose");
 const Product = require("../models/Product");
 
+// * CHAI CONFIG
 chai.use(chaiHttp);
 chai.should();
 
+// * TEST SETUP
 const testMongoUri = "mongodb://localhost/cafe_app_test";
 
+// Connect to database before the first test
 before((done) => connectToDb(done));
 
+// Function to connect to mongoDb
 const connectToDb = (done) => {
   mongoose.connect(
     testMongoUri,
@@ -32,6 +36,7 @@ const connectToDb = (done) => {
   );
 };
 
+// Create a test Product document
 const setupData = () => {
   const name = "Potato";
   const description = "This is the best potato ever ma guyyy";
@@ -44,24 +49,29 @@ const setupData = () => {
   return Product.create(newProduct);
 };
 
+// before each test create a new Product document
 beforeEach(async function () {
   const product = await setupData();
   productId = product._id;
 });
 
+// Delete Product document
 const tearDownData = () => {
   return Product.deleteMany();
 };
 
+// After each test delete the Product document
 afterEach((done) => {
   tearDownData().exec(() => done());
 });
 
+// Close the connection to the db once all the tests have been run
 after((done) => {
   mongoose.disconnect(() => done());
 });
 
 describe("product CRUD operations", function () {
+  // * READ - TESTS
   describe("get all products at /products", function () {
     it("should return with a status of 200", function () {
       chai
