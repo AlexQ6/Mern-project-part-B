@@ -5,10 +5,6 @@ const getProducts = (req, res) => {
 };
 
 const createProduct = (req, res) => {
-<<<<<<< HEAD
-=======
-  console.log("productUtil");
->>>>>>> orders
   const { name, description, image, tags, options, price } = req.body; // EDIT
   const newProduct = { name, description, image, tags, options, price }; // EDIT
   return new Product(newProduct);
@@ -23,8 +19,8 @@ const deleteProduct = (req, res) => {
 };
 
 const updateProduct = (req, res) => {
-  const { name } = req.body; // EDIT
-  const updatedProduct = { name }; // EDIT
+  const { name, description, image, tags, options, price } = req.body; // EDIT
+  const updatedProduct = { name, description, image, tags, options, price }; // EDIT
   return Product.findByIdAndUpdate(req.params.id, updatedProduct, {
     new: true,
   })
