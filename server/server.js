@@ -6,7 +6,7 @@ require("dotenv/config");
 
 // LOCAL FILES
 const productRouter = require('./routes/productRouter');
-const orderRouter = require('./routes/orderRouter')
+const orderRouter = require('./routes/orderRouter');
 
 // CONSTANT VARIABLES
 const PORT = process.env.PORT || 5000;
