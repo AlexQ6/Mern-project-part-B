@@ -6,9 +6,9 @@ const getProducts = (req, res) => {
 
 const createProduct = (req, res) => {
   console.log("productUtil");
-  const { name, description, image, tags, options, price } = req.body; // EDIT
-  const newProduct = { name, description, image, tags, options, price }; // EDIT
-  return new Product(newProduct);
+  // const { name, description, image, tags, options, price } = req.body; // EDIT
+  // const newProduct = { name, description, image, tags, options, price }; // EDIT
+  return new Product(req.body);
 };
 
 const getProduct = (req, res) => {

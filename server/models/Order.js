@@ -11,7 +11,7 @@ const Order = new Schema({
       type: String,
       // required: true,
       validator: function(v) {
-        arr = v.split("")
+        arr = v.trim().split("")
         return (arr[0] == "0" && arr[1] == "4" && arr.length == 10)
       },
       message: "Please enter a valid mobile number"
@@ -33,7 +33,7 @@ const Order = new Schema({
       default: false
     },
 
-    items: [{item: String, price: Number, quantity: Number, options: [String], }],
+    items: [{item: String, price: Number, quantity: Number, options: [String] }],
 
     totalPrice: {
       type: Number,

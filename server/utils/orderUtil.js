@@ -5,9 +5,8 @@ const getOrders = (req, res) => {
 }
 
 const createOrder = (req, res) => {
-  const { name } = req.body; // EDIT
-  const newOrder = {name} // EDIT
-  return new Order(newOrder);
+  console.log(req.body);
+  return new Order(req.body);
 }
 
 const getOrder = (req, res) => {
