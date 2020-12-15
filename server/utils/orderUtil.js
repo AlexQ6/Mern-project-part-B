@@ -18,9 +18,9 @@ const deleteOrder = (req, res) => {
 }
 
 const updateOrder = (req, res) => {
-  const { name } = req.body; // EDIT
-  const updatedOrder = {name} // EDIT
-  return Order.findByIdAndUpdate(req.params.id, updatedOrder, { new: true })
+  // const { name } = req.body; // EDIT
+  // const updatedOrder = {name} // EDIT
+  return Order.findByIdAndUpdate(req.params.id, req.body, { new: true })
 }
 
 module.exports = {
