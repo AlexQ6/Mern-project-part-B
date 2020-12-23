@@ -1,26 +1,29 @@
-const Order = require('../models/Order')
+const Order = require("../models/Order");
 
 const getOrders = (req, res) => {
-  return Order.find()
-}
+  return Order.find();
+};
 
 const createOrder = (req, res) => {
   return new Order(req.body);
-}
+};
 
 const getOrder = (req, res) => {
-  return Order.findById(req.params.id)
-}
+  return Order.findById(req.params.id);
+};
 
 const deleteOrder = (req, res) => {
-  return Order.findByIdAndDelete(req.params.id)
-}
+  return Order.findByIdAndDelete(req.params.id);
+};
 
 const updateOrder = (req, res) => {
   // const { name } = req.body; // EDIT
   // const updatedOrder = {name} // EDIT
-  return Order.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
-}
+  return Order.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+};
 
 module.exports = {
   getOrders,
@@ -28,4 +31,4 @@ module.exports = {
   getOrder,
   deleteOrder,
   updateOrder,
-}
+};
