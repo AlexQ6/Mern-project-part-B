@@ -6,6 +6,7 @@ const {
   updateProduct,
 } = require("../utils/productUtil");
 
+
 const getAllProducts = (req, res) => {
   getProducts(req).exec((err, products) => {
     if (err) {

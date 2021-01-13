@@ -23,6 +23,7 @@ const Order = new Schema({
     email: {
       type: String,
       required: true,
+
       match: [/((?:.+\.)+|(?:.+)+).+@(?:[\w\d]+\.)+(?:\w+)/, 'Please fill a valid email address']
       // /(.+)@(.+\.){1,}(\w+)/
     },
