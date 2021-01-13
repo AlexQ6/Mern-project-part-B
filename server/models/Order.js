@@ -2,23 +2,31 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Order = new Schema({
-  name: {
-    type: String,
-    required: [true, "Customer name required"],
-  },
-
-  mobile: {
-    type: String,
-    // required: true,
-    validate: {
-      validator: function (v) {
-        str = v.replace(/ +/g, "");
-        arr = str.split("");
-        return arr[0] == "0" && arr[1] == "4" && arr.length == 10;
-      },
+    name: {
+      type: String,
+      required: [true, "Customer name required"],
     },
-    message: (props) => `${props.value} is not a valid phone number!`,
-  },
+
+    mobile: {
+      type: String,
+      // required: true,
+      validate: { 
+        validator: function(v) {
+          str = v.replace(/ +/g, "")
+          arr = str.split("")
+          return (arr[0] == "0" && arr[1] == "4" && arr.length == 10)
+        },
+      },
+      message: props => `${props.value} is not a valid phone number!`
+    },
+
+  email: {
+      type: String,
+      required: true,
+
+      match: [/((?:.+\.)+|(?:.+)+).+@(?:[\w\d]+\.)+(?:\w+)/, 'Please fill a valid email address']
+      // /(.+)@(.+\.){1,}(\w+)/
+    },
 
   email: {
     type: String,

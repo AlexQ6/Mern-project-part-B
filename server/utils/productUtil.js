@@ -5,9 +5,6 @@ const getProducts = (req, res) => {
 };
 
 const createProduct = (req, res) => {
-  console.log("productUtil");
-  // const { name, description, image, tags, options, price } = req.body; // EDIT
-  // const newProduct = { name, description, image, tags, options, price }; // EDIT
   return new Product(req.body);
 };
 
@@ -20,9 +17,7 @@ const deleteProduct = (req, res) => {
 };
 
 const updateProduct = (req, res) => {
-  const { name, description, image, tags, options, price } = req.body; // EDIT
-  const updatedProduct = { name, description, image, tags, options, price }; // EDIT
-  return Product.findByIdAndUpdate(req.params.id, updatedProduct, {
+  return Product.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true
   })

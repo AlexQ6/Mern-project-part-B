@@ -17,13 +17,8 @@ const deleteOrder = (req, res) => {
 };
 
 const updateOrder = (req, res) => {
-  // const { name } = req.body; // EDIT
-  // const updatedOrder = {name} // EDIT
-  return Order.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  });
-};
+  return Order.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+}
 
 module.exports = {
   getOrders,
