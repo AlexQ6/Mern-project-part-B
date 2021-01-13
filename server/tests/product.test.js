@@ -91,6 +91,7 @@ describe("product CRUD operations", function () {
                 .get("/products")
                 .end((err, res) => {
                     should.exist(res.body);
+                    console.log(res.body);
                     res.body.should.be.a("array");
                 });
         });
