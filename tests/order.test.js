@@ -3,13 +3,13 @@ const chaiHttp = require("chai-http");
 const app = require("../server");
 const mongoose = require("mongoose");
 const Order = require("../models/Order");
-const utilities = require("../utils/orderUtil");
+
 
 // * CHAI CONFIG
 chai.use(chaiHttp);
 const should = require("chai").should();
 
-let orderId = null;
+// let orderId = null;
 
 
 // Create test Order document
@@ -27,7 +27,7 @@ const setupData = () => {
 // Before each test create a new Order document
 beforeEach(async function(){
     const order = await setupData();
-    orderId = order._id
+    // orderId = order._id
     
 })
 
@@ -109,14 +109,14 @@ describe("order CURD operations", function () {
                 .send(order1)
                 .end((err, res) => {
 
-                        // console.log("res.body here for get id", res.body);
-                        res.should.have.status(200);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('name');
-                        res.body.should.have.property('email');
-                        res.body.should.have.property('mobile');
-                        res.body.should.have.property('items');
-                        
+                    // console.log("res.body here for get id", res.body);
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('name');
+                    res.body.should.have.property('email');
+                    res.body.should.have.property('mobile');
+                    res.body.should.have.property('items');
+                    
                     done();
               })
 
@@ -129,7 +129,7 @@ describe("order CURD operations", function () {
 
     describe("post request at /orders", function () {
         it("should post an order", function ()  {
-            const order = {
+            const order2 = {
                 name: "posty",
                 email: "tolkien@gmail.com",
                 mobile: "0400123123",
@@ -140,7 +140,7 @@ describe("order CURD operations", function () {
             chai
                 .request(app)
                 .post("/orders/new")
-                .send(order)
+                .send(order2)
                 .end((err, res) => {
                     console.log(res.body);
                     res.body.should.have.property('name');

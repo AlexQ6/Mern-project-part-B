@@ -7,41 +7,8 @@ const Product = require("../models/Product");
 // * CHAI CONFIG
 const should = require("chai").should();
 chai.use(chaiHttp);
-// chai.should();
-
-// * TEST SETUP
-// const testMongoUri = "mongodb://localhost/cafe_app_test";
-
-// Connect to database before the first test
-// before((done) => connectToDb(done));
 
 
-// Close the connection to the db once all the tests have been run
-// after((done) => {
-//   mongoose.disconnect(() => done());
-// });
-
-// Function to connect to mongoDb
-// const connectToDb = (done) => {
-//     mongoose.connect(
-//         testMongoUri,
-//         {
-//             useNewUrlParser: true,
-//             useFindAndModify: false,
-//             useUnifiedTopology: true,
-//             useCreateIndex: true,
-//         },
-//         (err) => {
-//             if (err) {
-//                 console.log(err);
-//                 done();
-//             } else {
-//                 console.log("Connected to DB");
-//                 done();
-//             }
-//         }
-//     );
-// };
 
 // Create a test Product document
 const setupData = () => {
@@ -98,16 +65,39 @@ describe("product CRUD operations", function () {
     });
 
     describe("get one product at /product/:id", function () {
-        it("should return one object with a product id with the name 'hamburger'", function () {
-            chai.request(app)
-                .get(`/products/${productId}`)
-                .end((err, res) => {
-                    const name = res.body.name;
-                    
-                    name.should.equal("hamburger");
+        let product1 = new Product({
+            name: "vegan chocolate",
+            description: "tasty",
+            price: 3,
+            tags: [{ name: "Vegan", color: "Green" }],
+            options:[{ name: "Add Sauce", price: 12.0 }]
 
+        })
+
+        it("should return one object with a product id with the name 'hamburger'", function () {
+            
+
+            product1.save((err,product1) => {
+                chai
+                    .request(app)
+                    .get("/products/"+ product1.id)
+                    .send(product1)
+                    .end((err,res) => {
+
+                        res.should.have.status(200);
+                        res.body.should.be.a('object');
+                        res.body.should.have.property('name');
+                        res.body.should.have.property('price');
+                        res.body.should.have.property('tags');
+                        res.body.should.have.property('options');
                     
-                });
+                        
+
+                    })
+
+            })
+
+           
         });
 
         it("should have all 6 fields: name, image, description, price, options, tags", function () {
@@ -121,14 +111,24 @@ describe("product CRUD operations", function () {
                 "_id",
                 "__v",
             ];
-            chai.request(app)
-                .get(`/products/${productId}`)
+
+            product1.save((err,product1) => {
+                chai.request(app)
+                .get("/products/"+ product1.id)
+                .send(product1)
                 .end((err, res) => {
                     const hasKeys = Object.keys(res.body).map((key) =>
                         fields.includes(key)
                     );
                     hasKeys.should.not.contain(false);
+
+                    
                 });
+
+
+                
+            })
+            
         });
     });
 });
