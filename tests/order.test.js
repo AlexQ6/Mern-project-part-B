@@ -72,21 +72,6 @@ describe("order CURD operations", function () {
         });
     });
 
-    // describe("get one order at orders/:id", function () {
-        
-    //     it("should return one order with orderId", function () {
-            
-    //         chai
-    //             .request(app)
-    //             .get(`/orders/${orderId}`)
-    //             .end((err, res) => {
-                    
-    //                 const name = res.body.name
-                    
-    //                 name.should.equal("Bob")
-    //             })
-    //     })
-    // })
 
     describe('/GET/:id ', () => {
         it('it should GET a order by the given id', (done) => {

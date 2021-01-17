@@ -64,7 +64,7 @@ describe("product CRUD operations", function () {
         });
     });
 
-    describe("get one product at /product/:id", function () {
+    describe("get one product at /products/:id", function () {
         let product1 = new Product({
             name: "vegan chocolate",
             description: "tasty",

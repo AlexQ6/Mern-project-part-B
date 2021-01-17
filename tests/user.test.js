@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 const setupData = () => {
     
     const email = "bob@gmail.com";
-    const password = "1234"
+    const password = "12345678"
     
     const newUser = {email, password}
     return User.create(newUser)
@@ -26,7 +26,7 @@ beforeEach(async function () {
 
 // Delete User document
 function tearDownData() {
-	return Order.deleteMany()
+	return User.deleteMany()
 }
 
 // Delete test data after each test
@@ -35,11 +35,72 @@ afterEach((done) => {
     tearDownData().exec(() => done());
 });
 
-describe("User operations", function () {
+describe("User authentication", function () {
+
+    const user1 = {
+        email: "test@test.com",
+        password: "22222222"
+    }
+
+    describe("Login user", function () {
+
+        it("should return with successful redirect" , function () {
+
+            chai
+                .request(app)
+                .post("/user/login")
+                .send(user1)
+                .end((err,res) => {
+                    // console.log(res.body);
+                    res.should.have.status(302)
+                    res.header['location'].should.include("/")
+                    res.text.should.include("Logged In")
+                
+            })
+
+
+        })    
+
+
+    })
+
+    describe("Register user", function () {
+
+        it("should create new user" , function () {
+
+            chai
+                .request(app)
+                .post("/user/register")
+                .send(user1)
+                .end((err,res) => {
+                    console.log(res.body);
+                    res.body.should.have.property('password');
+                    res.body.should.have.property('email');
+                
+            })
+
+        })
+
+
+    })
 
 
 
 
+    describe("Logout user", function () {
+        it("should return logged out message", function () {
 
-    
+            chai
+                .request(app)
+                .get("/user/logout")
+                .end((err, res) => {
+                    res.text.should.include("Logged Out")
+                })
+
+        })
+    })
+
+
+
+
 })
