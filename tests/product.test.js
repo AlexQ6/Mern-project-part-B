@@ -58,7 +58,7 @@ describe("product CRUD operations", function () {
                 .get("/products")
                 .end((err, res) => {
                     should.exist(res.body);
-                    console.log(res.body);
+                    
                     res.body.should.be.a("array");
                 });
         });
@@ -131,4 +131,36 @@ describe("product CRUD operations", function () {
             
         });
     });
+
+    describe("Add new product via post request", function () {
+        it("should post an product", function ()  {
+
+            const product2 = {
+                name: "meat pie",
+                description: "meaty",
+                price: 4,
+                tags: [{}],
+                options:[{}]
+
+            }
+
+            chai 
+                .request(app)
+                .post("/products/new")
+                .send(product2)
+                .end((err, res) => {
+                    
+                    res.body.should.have.property('name');
+                    res.body.should.have.property('description');
+                    res.body.should.have.property('price');
+                    res.body.should.have.property('tags');
+                    res.body.should.have.property('options');
+                })
+
+        })
+    })
+
+
+
+
 });
