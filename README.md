@@ -155,7 +155,7 @@ For Admin user authentication
 | Feature | Description | Expected Outcome occur? | 
 | ------ | ------ | ------- | 
 | Admin user login | Admin user can login and get success confirmation |  |
-| Admin user register | Add new user entry into database | Y |
+| Admin user register | Add new user entry into database |  |
 | Admin user logout | Destroy current user session | Y |
 
 
