@@ -1,6 +1,6 @@
 const passport = require("passport");
 const router = require("express").Router();
-const { registerCreate, logout } = require("../controllers/authController")
+const { registerCreate, logout, dashboard } = require("../controllers/authController")
 
 // Route to create a new user
 router.post('/register', registerCreate)
@@ -11,5 +11,9 @@ router.post("/login", passport.authenticate("local", { failureRedirect: "/login"
 
 // Route to logout
 router.get("/logout", logout)
+
+
+
+
 
 module.exports = router;

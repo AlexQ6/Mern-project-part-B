@@ -42,59 +42,77 @@ describe("User authentication", function () {
         password: "22222222"
     }
 
-    describe("Login user", function () {
+    // describe("Login user", function () {
 
-        it("should return with successful redirect" , function () {
+    //     const user1 = {
+    //         email: "test@test.com",
+    //         password: "22222222"
+    //     }
 
-            chai
-                .request(app)
-                .post("/user/login")
-                .send(user1)
-                .end((err,res) => {
-                    // console.log(res.body);
-                    res.should.have.status(302)
-                    res.header['location'].should.include("/")
-                    res.text.should.include("Logged In")
-                
-            })
+    //     it("should return with successful redirect" , function (done) {
 
+    //         chai
+    //             .request(app)
+    //             .post("/user/login")
+    //             .send(user1)
+    //             .end((err,res) => {
+                    
+                    
+    //                 // res.header['location'].should.include("/")
+                    
+    //                 res.body.should.have.property('password');
+    //                 res.body.should.have.property('email');
 
-        })    
+    //                 done()
 
-
-    })
-
-    describe("Register user", function () {
-
-        it("should create new user" , function () {
-
-            chai
-                .request(app)
-                .post("/user/register")
-                .send(user1)
-                .end((err,res) => {
-                    console.log(res.body);
-                    res.body.should.have.property('password');
-                    res.body.should.have.property('email');
-                
-            })
-
-        })
+                    
+                   
+    //         })
 
 
-    })
+    //     })   
+
+    // })
+
+    // describe("Register user", function () {
+
+    //     const user2 = {
+    //         email: "test2@test.com",
+    //         password: "22222222"
+    //     }
+
+    //     it("should create new user" , function (done) {
+
+    //         chai
+    //             .request(app)
+    //             .post("/user/register")
+    //             .send(user2)
+    //             .end((err,res) => {
+    //                 console.log(res.body);
+    //                 res.body.should.have.property('email');
+    //                 res.body.should.have.property("password");
+                    
+    //                 done()
+    //         })
+
+    //     })
+
+
+    // })
 
 
 
 
     describe("Logout user", function () {
-        it("should return logged out message", function () {
+        it("should return logged out message", function (done) {
 
             chai
                 .request(app)
                 .get("/user/logout")
                 .end((err, res) => {
                     res.text.should.include("Logged Out")
+
+                    done()
                 })
 
         })

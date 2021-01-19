@@ -1,8 +1,12 @@
-[Part A Docs](#Part-A)
+[Part A Docs](https://github.com/AlexQ6/Mern-project-part-A)
 
-[Part B Docs](#Part-B)
+[Part B Docs and server repo](https://github.com/AlexQ6/Mern-project-part-B)
 
-# Part A
+[Client repo](https://github.com/AlexQ6/mern-app-react)
+
+[website](https://cafexyz.netlify.app/)
+
+# Part B
 
 Joint project By Alex Qiang and Lachlan Reynolds
 
@@ -37,6 +41,7 @@ As Australia enters a covid-normal environment, the restaurant industry has to a
 - Google analytics 
 - Maps API 
 - Search function for ordering
+- AWS S3 image hosting
 
 
 ### Target audience
@@ -51,13 +56,26 @@ As Australia enters a covid-normal environment, the restaurant industry has to a
 
 #### App
 
-- MongoDB
+- MongoDB  
 - ExpressJS
 - React
 - NodeJS
-- Stripe API
-- Paypal API
+
+
+#### APis and libraries
+
+- Passport JS
+  - Authentication library for the server side
+- Mongoose
+  - Provides schema-based modelling to MongoDB. Allows for easy interaction with rest of the app. 
+- Mocha and chai
+  - Mocha is the testing framework used and chai is the assertion library used
+- Stripe and PayPal API
+  - Third party payment processing API
 - SendGrid 
+  - Allows the app to send emails 
+
+
   
 #### Deployment
 
@@ -72,23 +90,17 @@ As Australia enters a covid-normal environment, the restaurant industry has to a
   
 ### Styling
 
-- SCSS
 - Bootstrap
-
-### Image Upload
-
-- AWS S3
-
 
 ## Dataflow Diagram
 
-![dfd](img/dfd.jpg)
+![dfd](docs/dfd.jpg)
 
 
 
 ## Application Architecture Diagram
 
-![aad](img/aad.jpg)
+![aad](docs/aad.jpg)
 
 
 ## User Stories
@@ -125,6 +137,48 @@ Liz is an accountant and is a mother of 2 children. She is a very busy person bu
   - choose when I come to collect my order so I can pick up my food when I'm ready
   
 
+## Manual testing
+
+For Products and Orders models
+
+| Feature | Description | Expected Outcome occur? | 
+| ------ | ------ | ------- | 
+| Read all entries | All products and orders can be called | Y |
+| Read one entry | Read one product or order | Y | 
+| Create an entry | Create an new product / orders entry  | Y |
+| Update an entry  | Newly input information of existing entry is overwrites | Y |
+| Delete entry | Remove a product/order from the database | Y |
+
+
+For Admin user authentication
+
+| Feature | Description | Expected Outcome occur? | 
+| ------ | ------ | ------- | 
+| Admin user login | Admin user can login and get success confirmation |  |
+| Admin user register | Add new user entry into database | Y |
+| Admin user logout | Destroy current user session | Y |
+
+
+
+## User interface tour
+
+
+## Trello Screenshots for project management and task delegation
+
+<details>
+<summary>Click to expand</summary>
+
+![Trello-1](docs/part-b-screenshot-1.PNG)
+
+
+
+![Trello-2](docs/trello-partB-2.jpg)
+
+![Trello-3](docs/part-b-screenshot-3.PNG)
+
+</details>
+
+
 ## Wireframes
 
 ### Home
@@ -132,11 +186,11 @@ Liz is an accountant and is a mother of 2 children. She is a very busy person bu
 <details>
 <summary>Click to expand</summary>
 
-![Home - Desktop Colored](./img/Wireframes/Home%20-%20Desktop%20-%20Prototype.png)
-![Home - Desktop](./img/Wireframes/Home%20-%20Desktop.png)
-![Home - Tablet](./img/Wireframes/Home%20-%20Tablet.png)
-![Home - Mobile](./img/Wireframes/Home%20-%20Mobile.png)
-![Home - Mobile w/ Nav](./img/Wireframes/Home%20-%20Mobile%20-%20Nav.png)
+![Home - Desktop Colored](./docs/Wireframes/Home%20-%20Desktop%20-%20Prototype.png)
+![Home - Desktop](./docs/Wireframes/Home%20-%20Desktop.png)
+![Home - Tablet](./docs/Wireframes/Home%20-%20Tablet.png)
+![Home - Mobile](./docs/Wireframes/Home%20-%20Mobile.png)
+![Home - Mobile w/ Nav](./docs/Wireframes/Home%20-%20Mobile%20-%20Nav.png)
 
 </details>
 
@@ -145,10 +199,10 @@ Liz is an accountant and is a mother of 2 children. She is a very busy person bu
 <details>
 <summary>Click to expand</summary>
 
-![Order - Desktop Colored](img\Wireframes\Menu%20-%20Desktop%20–%204.png)
-![Order - Desktop](./img/Wireframes/Menu%20-%20Desktop.png)
-![Order - Tablet](./img/Wireframes/Menu%20%20-%20Tablet.png)
-![Order - Mobile](./img/Wireframes/Menu%20-%20Mobile.png)
+![Order - Desktop Colored](docs/Wireframes/Menu%20-%20Desktop%20–%204.png)
+![Order - Desktop](./docs/Wireframes/Menu%20-%20Desktop.png)
+![Order - Tablet](./docs/Wireframes/Menu%20%20-%20Tablet.png)
+![Order - Mobile](./docs/Wireframes/Menu%20-%20Mobile.png)
 
 </details>
 
@@ -157,10 +211,10 @@ Liz is an accountant and is a mother of 2 children. She is a very busy person bu
 <details>
 <summary>Click to expand</summary>
 
-![Order Modal - Desktop Colored](img\Wireframes\Menu%20-%20Desktop%20–%205.png)
-![Order Modal - Desktop](./img/Wireframes/Order%20Modal%20-%20Desktop.png)
-![Order Modal - Tablet](./img/Wireframes/Order%20Modal%20-%20Tablet.png)
-![Order Modal - Mobile](./img/Wireframes/Order%20Modal%20-%20Mobile.png)
+![Order Modal - Desktop Colored](docs/Wireframes/Menu%20-%20Desktop%20–%205.png)
+![Order Modal - Desktop](./docs/Wireframes/Order%20Modal%20-%20Desktop.png)
+![Order Modal - Tablet](./docs/Wireframes/Order%20Modal%20-%20Tablet.png)
+![Order Modal - Mobile](./docs/Wireframes/Order%20Modal%20-%20Mobile.png)
 
 </details>
 
@@ -169,12 +223,12 @@ Liz is an accountant and is a mother of 2 children. She is a very busy person bu
 <details>
 <summary>Click to expand</summary>
 
-![Contact - Desktop Colored](./img/Wireframes/Menu%20-%20Desktop%20–%203.png)
-![Contact - Tablet Colored](img\Wireframes\Menu%20%20-%20Tablet%20-%20Portrait%20–%204.png)
-![Contact - Mobile Colored](img\Wireframes\Contact%20-%20Mobile%20–%201.png)
-![Contact - Desktop](./img/Wireframes/Contact%20-%20Desktop.png)
-![Contact - Tablet](./img/Wireframes/Contact%20-%20Tablet.png)
-![Contact - Mobile](./img/Wireframes/Contact%20-%20Mobile.png)
+![Contact - Desktop Colored](./docs/Wireframes/Menu%20-%20Desktop%20–%203.png)
+![Contact - Tablet Colored](docs/Wireframes/Menu%20%20-%20Tablet%20-%20Portrait%20–%204.png)
+![Contact - Mobile Colored](docs/Wireframes/Contact%20-%20Mobile%20–%201.png)
+![Contact - Desktop](./docs/Wireframes/Contact%20-%20Desktop.png)
+![Contact - Tablet](./docs/Wireframes/Contact%20-%20Tablet.png)
+![Contact - Mobile](./docs/Wireframes/Contact%20-%20Mobile.png)
 
 </details>
 
@@ -183,9 +237,9 @@ Liz is an accountant and is a mother of 2 children. She is a very busy person bu
 <details>
 <summary>Click to expand</summary>
 
-![Checkout - Desktop](./img/Wireframes/Checkout%20-%20Desktop.png)
-![Checkout - Tablet](./img/Wireframes/Checkout%20-%20Tablet.png)
-![Checkout - Mobile](./img/Wireframes/Checkout%20-%20Mobile.png)
+![Checkout - Desktop](./docs/Wireframes/Checkout%20-%20Desktop.png)
+![Checkout - Tablet](./docs/Wireframes/Checkout%20-%20Tablet.png)
+![Checkout - Mobile](./docs/Wireframes/Checkout%20-%20Mobile.png)
 
 </details>
 
@@ -194,35 +248,36 @@ Liz is an accountant and is a mother of 2 children. She is a very busy person bu
 <details>
 <summary>Click to expand</summary>
 
-![CMS - Products Home](./mg/Wireframes/../../img/Wireframes/CMS%20-%20Products.png)
-![CMS - All Products](./mg/Wireframes/../../img/Wireframes/CMS%20-%20All%20Product.png)
-![CMS - New Product](./mg/Wireframes/../../img/Wireframes/CMS%20-%20New%20Product.png)
-![CMS - All Orders](./img/Wireframes/CMS%20-%20All%20Orders.png)
-![CMS - Account](./img/Wireframes/CMS%20-%20Account.png)
+![CMS - Products Home](./docs/Wireframes/CMS%20-%20Products.png)
+![CMS - All Products](./docs/Wireframes/CMS%20-%20All%20Product.png)
+![CMS - New Product](./docs/Wireframes/CMS%20-%20New%20Product.png)
+![CMS - All Orders](./docs/Wireframes/CMS%20-%20All%20Orders.png)
+![CMS - Account](./docs/Wireframes/CMS%20-%20Account.png)
 
 </details>
 
-## Trello Screenshots
+## Trello planning Screenshots
 
 <details>
 <summary>Click to expand</summary>
 
 ### 23/11/2020
 
-![Trello - 23rd Nov](./img/screenshots/start_trello_board.PNG)
+![Trello - 23rd Nov](./docs/screenshots/start_trello_board.PNG)
 
 ### 25/11/2020
 
-![Trello - 25th Nov](./img/screenshots/during_one_trello_board.PNG)
+![Trello - 25th Nov](./docs/screenshots/during_one_trello_board.PNG)
 
 ### 02/12/2020
 
-![Trello - 2nd Dec](./img/screenshots/during_two_trello_board.PNG)
+![Trello - 2nd Dec](./docsscreenshots/during_two_trello_board.PNG)
 
 ### 09/12/2020
 
-![Trello - 9th Dec](./img/screenshots/final_trello_board.PNG)
+![Trello - 9th Dec](./docs/screenshots/final_trello_board.PNG)
 
 </details>
 
-# Part B
+
+

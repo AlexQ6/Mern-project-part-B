@@ -85,25 +85,25 @@ describe("order CURD operations", function () {
                 totalPrice: 6 
             });
             
-            // console.log(order1)
+            
             order1.save((err, order1) => {
 
-            chai
-                .request(app)
-                .get("/orders/"+ order1.id)
-                .send(order1)
-                .end((err, res) => {
+                chai
+                    .request(app)
+                    .get("/orders/"+ order1.id)
+                    .send(order1)
+                    .end((err, res) => {
 
-                    // console.log("res.body here for get id", res.body);
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('name');
-                    res.body.should.have.property('email');
-                    res.body.should.have.property('mobile');
-                    res.body.should.have.property('items');
-                    
-                    done();
-              })
+                        
+                        res.should.have.status(200);
+                        res.body.should.be.a('object');
+                        res.body.should.have.property('name');
+                        res.body.should.have.property('email');
+                        res.body.should.have.property('mobile');
+                        res.body.should.have.property('items');
+                        
+                        done();
+                     })
 
             })
             
@@ -127,7 +127,7 @@ describe("order CURD operations", function () {
                 .post("/orders/new")
                 .send(order2)
                 .end((err, res) => {
-                    console.log(res.body);
+                    
                     res.body.should.have.property('name');
                     res.body.should.have.property('items');
                     res.body.should.have.property('totalPrice');
@@ -137,5 +137,42 @@ describe("order CURD operations", function () {
 
         })
     })
+
+    describe("PUT edit/:id order", () => {
+        it('it should UPDATE an order given id', (done) => {
+            let order3 = new Order ({
+                name: "PUT",
+                email: "tolkien@gmail.com",
+                mobile: "0400123123",
+                items: [{item: "Isengard pie", price: 3, quantity: 2, options: ["extra sauce"] }],
+                totalPrice: 6
+            })
+
+            order3.save((err, order3) => {
+                chai
+                    .request(app)
+                    .put("/orders/edit/" + order3.id)
+                    .send(order3)
+                    .end((err, res) => {
+
+                        console.log(res.body);
+
+                        
+                        
+                        res.body.should.be.a('object');
+                        res.body.should.have.property('name').eql("PUT");
+
+                        done()
+                        
+            
+                    });
+
+
+            })
+            
+            
+    
+        });
+    });
 
 })

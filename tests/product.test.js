@@ -74,7 +74,7 @@ describe("product CRUD operations", function () {
 
         })
 
-        it("should return one object with a product id with the name 'hamburger'", function () {
+        it("should return one object with all data fields", function (done) {
             
 
             product1.save((err,product1) => {
@@ -90,8 +90,11 @@ describe("product CRUD operations", function () {
                         res.body.should.have.property('price');
                         res.body.should.have.property('tags');
                         res.body.should.have.property('options');
-                    
-                        
+                        res.body.should.have.property('options');
+                        res.body.should.have.property('__v');
+                        res.body.should.have.property('_id');
+                        res.body.should.have.property('image');
+                        done()
 
                     })
 
@@ -100,36 +103,7 @@ describe("product CRUD operations", function () {
            
         });
 
-        it("should have all 6 fields: name, image, description, price, options, tags", function () {
-            const fields = [
-                "name",
-                "description",
-                "price",
-                "tags",
-                "options",
-                "image",
-                "_id",
-                "__v",
-            ];
-
-            product1.save((err,product1) => {
-                chai.request(app)
-                .get("/products/"+ product1.id)
-                .send(product1)
-                .end((err, res) => {
-                    const hasKeys = Object.keys(res.body).map((key) =>
-                        fields.includes(key)
-                    );
-                    hasKeys.should.not.contain(false);
-
-                    
-                });
-
-
-                
-            })
-            
-        });
+        
     });
 
     describe("Add new product via post request", function () {
@@ -159,6 +133,39 @@ describe("product CRUD operations", function () {
 
         })
     })
+
+    describe("PUT edit/:id product", () => {
+        it('it should UPDATE a product given id', (done) => {
+            const product3 = new Product({
+                name: "bacon and eggs sandwich",
+                description: "tasty brekky",
+                price: 8,
+                tags: [{}],
+                options:[{}]
+            })
+
+            product3.save((err, product3) => {
+                chai
+                    .request(app)
+                    .put("/products/edit/" + product3.id)
+                    .send(product3)
+                    .end((err, res) => { 
+                        
+                        res.body.should.be.a('object');
+                        res.body.should.have.property('name').eql("bacon and eggs sandwich");
+
+                        done()
+                        
+            
+                    });
+
+
+            })
+            
+            
+    
+        });
+    });
 
 
 
